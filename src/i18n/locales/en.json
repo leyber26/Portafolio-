@@ -125,6 +125,7 @@
             "email": "Email",
             "location": "Location",
             "phone": "Phone",
+            "whatsapp": "WhatsApp",
             "social": "Social Media",
             "name": "Name",
             "message": "Message"

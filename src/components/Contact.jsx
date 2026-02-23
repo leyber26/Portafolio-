@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiSend, FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 
@@ -136,6 +137,23 @@ export default function Contact() {
                                 <p className="text-text-secondary text-xs font-mono">{t('contact.labels.phone')}</p>
                                 <a href="tel:+584145807657" className="text-white text-sm font-medium hover:text-electric transition-colors">
                                     +58 0414 580 7657
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="glass-card p-4 flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                                <FaWhatsapp className="w-5 h-5 text-green-500" />
+                            </div>
+                            <div>
+                                <p className="text-text-secondary text-xs font-mono">{t('contact.labels.whatsapp')}</p>
+                                <a
+                                    href="https://wa.me/584145807657"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-white text-sm font-medium hover:text-green-500 transition-colors"
+                                >
+                                    WhatsApp Chat
                                 </a>
                             </div>
                         </div>
