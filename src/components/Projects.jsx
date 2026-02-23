@@ -1,88 +1,11 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import {
     SiPython, SiFlask, SiReact, SiPostgresql, SiSupabase,
     SiJavascript, SiHtml5, SiSqlite,
 } from 'react-icons/si';
-
-const projects = [
-    {
-        id: 1,
-        title: 'Voxen Labs: Analíticas Híbridas',
-        description:
-            'App híbrida (.exe) con backend en Python (Tkinter, Pywebview, SQLite) y dashboard web moderno. Implementación de diseño Glassmorphism, modo claro/oscuro y sistema seguro de login.',
-        tags: ['Python', 'Tkinter', 'SQLite', 'HTML/CSS/JS'],
-        icons: [SiPython, SiSqlite, SiJavascript],
-        color: '#00b4ff',
-        gradient: 'from-blue-500/20 to-cyan-500/10',
-        badge: 'Escritorio',
-        badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-        demoUrl: '#',
-        codeUrl: '#',
-        featured: true,
-    },
-    {
-        id: 2,
-        title: 'Gestor de E-Commerce & Inventario',
-        description:
-            'Panel de administración con lógica para alertas de stock, prevención de compras agotadas y dashboard de validación de pagos y actualización de estados de órdenes.',
-        tags: ['React', 'Dashboard', 'Gestión', 'Logística'],
-        icons: [SiReact, SiJavascript],
-        color: '#7c3aed',
-        gradient: 'from-purple-500/20 to-violet-500/10',
-        badge: 'E-commerce',
-        badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
-        demoUrl: '#',
-        codeUrl: '#',
-        featured: true,
-    },
-    {
-        id: 3,
-        title: 'IA Offline: Integración Local',
-        description:
-            'Configuración y despliegue de modelos de síntesis de voz (Qwen-TTS) y reconocimiento (Whisper) para ejecución en entorno local sin APIs externas, asegurando máxima privacidad.',
-        tags: ['IA', 'Whisper', 'Qwen-TTS', 'Python'],
-        icons: [SiPython],
-        color: '#10b981',
-        gradient: 'from-emerald-500/20 to-teal-500/10',
-        badge: 'Inteligencia Artificial',
-        badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-        demoUrl: '#',
-        codeUrl: '#',
-        featured: false,
-    },
-    {
-        id: 4,
-        title: 'React Portfolio & Túneles (Localtunnel)',
-        description:
-            'Single Page Application (SPA) con React y Vite. Configuración de túneles seguros para exponer de forma pública el servidor local sin hosting dedicado.',
-        tags: ['React', 'Vite', 'Localtunnel', 'Redes'],
-        icons: [SiReact, SiJavascript],
-        color: '#f59e0b',
-        gradient: 'from-orange-500/20 to-amber-500/10',
-        badge: 'Web & Redes',
-        badgeColor: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
-        demoUrl: '#',
-        codeUrl: '#',
-        featured: false,
-    },
-    {
-        id: 5,
-        title: 'Motor "Word Bank" I/O en C',
-        description:
-            'Procesamiento a bajo nivel para el conteo de ocurrencias de palabras. Optimización matemática de memoria por manipulación estricta de archivos/punteros evitando arrays/structs.',
-        tags: ['C', 'Low Level', 'Algoritmos', 'I/O'],
-        icons: [],
-        color: '#ef4444',
-        gradient: 'from-red-500/20 to-rose-500/10',
-        badge: 'Sistemas',
-        badgeColor: 'bg-red-500/20 text-red-300 border-red-500/30',
-        demoUrl: '#',
-        codeUrl: '#',
-        featured: false,
-    }
-];
 
 const cardVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -94,6 +17,8 @@ const cardVariants = {
 };
 
 function ProjectCard({ project, index }) {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             custom={index}
@@ -127,24 +52,26 @@ function ProjectCard({ project, index }) {
                     </div>
                     {/* Badge */}
                     <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-full border ${project.badgeColor}`}>
-                        {project.badge}
+                        {t(`projects.list.${project.idKey}.badge`)}
                     </span>
                 </div>
 
                 {/* Title */}
                 <h3 className="text-white font-bold text-lg mb-3 leading-snug group-hover:text-electric transition-colors">
-                    {project.title}
+                    {t(`projects.list.${project.idKey}.title`)}
                 </h3>
 
                 {/* Description */}
                 <p className="text-text-secondary text-sm leading-relaxed flex-1 mb-5">
-                    {project.description}
+                    {t(`projects.list.${project.idKey}.description`)}
                 </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tags.map((tag) => (
-                        <span key={tag} className="tag">{tag}</span>
+                    {(project.tagKeys || project.tags).map((tag, i) => (
+                        <span key={i} className="tag">
+                            {project.tagKeys ? t(`projects.tags.${tag}`) : tag}
+                        </span>
                     ))}
                 </div>
 
@@ -155,14 +82,14 @@ function ProjectCard({ project, index }) {
                         className="flex items-center gap-1.5 text-sm font-semibold text-electric hover:text-electric-glow transition-colors"
                     >
                         <FiExternalLink className="w-4 h-4" />
-                        Demo
+                        {t('projects.actions.demo')}
                     </a>
                     <a
                         href={project.codeUrl}
                         className="flex items-center gap-1.5 text-sm font-medium text-text-secondary hover:text-white transition-colors"
                     >
                         <FiGithub className="w-4 h-4" />
-                        Código
+                        {t('projects.actions.code')}
                     </a>
                 </div>
             </div>
@@ -171,8 +98,81 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+    const { t } = useTranslation();
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: '-80px' });
+
+    const projects = [
+        {
+            id: 1,
+            idKey: 'voxen',
+            tags: ['Python', 'Tkinter', 'SQLite', 'HTML/CSS/JS'],
+            icons: [SiPython, SiSqlite, SiJavascript],
+            color: '#00b4ff',
+            gradient: 'from-blue-500/20 to-cyan-500/10',
+            badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+            demoUrl: '#',
+            codeUrl: '#',
+            featured: true,
+        },
+        {
+            id: 2,
+            idKey: 'ecommerce',
+            tagKeys: ['React', 'Dashboard', 'mgmt', 'logistics'],
+            icons: [SiReact, SiJavascript],
+            color: '#7c3aed',
+            gradient: 'from-purple-500/20 to-violet-500/10',
+            badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+            demoUrl: '#',
+            codeUrl: '#',
+            featured: true,
+        },
+        {
+            id: 3,
+            idKey: 'ia',
+            tagKeys: ['ai', 'Whisper', 'Qwen-TTS', 'Python'],
+            icons: [SiPython],
+            color: '#10b981',
+            gradient: 'from-emerald-500/20 to-teal-500/10',
+            badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+            demoUrl: '#',
+            codeUrl: '#',
+            featured: false,
+        },
+        {
+            id: 4,
+            idKey: 'portfolio',
+            tagKeys: ['React', 'Vite', 'Localtunnel', 'networks'],
+            icons: [SiReact, SiJavascript],
+            color: '#f59e0b',
+            gradient: 'from-orange-500/20 to-amber-500/10',
+            badgeColor: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+            demoUrl: '#',
+            codeUrl: '#',
+            featured: false,
+        },
+        {
+            id: 5,
+            idKey: 'wordbank',
+            tagKeys: ['C', 'low_level', 'algorithms', 'I/O'],
+            icons: [],
+            color: '#ef4444',
+            gradient: 'from-red-500/20 to-rose-500/10',
+            badgeColor: 'bg-red-500/20 text-red-300 border-red-500/30',
+            demoUrl: '#',
+            codeUrl: '#',
+            featured: false,
+        }
+    ];
+
+    // Helper to get translated tag or original tag
+    const getTagLabel = (tag, tagKey) => {
+        if (tagKey) {
+            const translated = t(`projects.tags.${tagKey}`);
+            return translated !== `projects.tags.${tagKey}` ? translated : tag;
+        }
+        return tag;
+    };
 
     return (
         <section id="proyectos" className="py-24 px-6 relative">
@@ -188,19 +188,19 @@ export default function Projects() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <p className="section-subtitle">Portafolio</p>
+                    <p className="section-subtitle">{t('projects.subtitle')}</p>
                     <h2 className="section-title text-white">
-                        Proyectos <span className="electric-text">Destacados</span>
+                        {t('projects.title_start')}<span className="electric-text">{t('projects.title_accent')}</span>
                     </h2>
                     <p className="text-text-secondary mt-4 max-w-xl mx-auto">
-                        Soluciones reales que he construido, desde sistemas de gestión hasta plataformas de comercio electrónico.
+                        {t('projects.description')}
                     </p>
                 </motion.div>
 
                 {/* Cards Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
+                        <ProjectCard key={project.idKey} project={project} index={index} />
                     ))}
                 </div>
             </div>

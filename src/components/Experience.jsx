@@ -1,35 +1,33 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FiBriefcase, FiAward, FiCalendar } from 'react-icons/fi';
-
-const timelineItems = [
-    {
-        type: 'work',
-        icon: FiBriefcase,
-        title: 'Soporte Técnico / Especialista IT',
-        organization: 'Policlínica La Viña',
-        period: 'Presente',
-        description:
-            'Mantenimiento de equipos, gestión de redes y soporte a usuarios del área médica. Optimización del tiempo de respuesta en el sistema de tickets internos y soporte de software de la clínica.',
-        tags: ['Soporte IT', 'Redes', 'Mantenimiento'],
-        color: '#00b4ff',
-    },
-    {
-        type: 'work',
-        icon: FiBriefcase,
-        title: 'Desarrollador de Software Independiente',
-        organization: 'Múltiples Clientes (Voxen Labs, etc.)',
-        period: 'Presente',
-        description:
-            'Desarrollo de aplicaciones de escritorio híbridas, sistemas avanzados de gestión de inventario y pedidos, e integración local de modelos de Inteligencia Artificial (Qwen-TTS, Whisper).',
-        tags: ['Python', 'React', 'SQLite', 'IA', 'C'],
-        color: '#10b981',
-    },
-];
+import { FiBriefcase, FiCalendar } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 export default function Experience() {
+    const { t } = useTranslation();
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: '-80px' });
+
+    const timelineItems = [
+        {
+            type: 'work',
+            icon: FiBriefcase,
+            idKey: 'policlinica',
+            organization: 'Policlínica La Viña',
+            period: t('experience.present'),
+            tagKeys: ['support', 'networks', 'maintenance'],
+            color: '#00b4ff',
+        },
+        {
+            type: 'work',
+            icon: FiBriefcase,
+            idKey: 'independent',
+            organization: 'Múltiples Clientes (Voxen Labs, etc.)',
+            period: t('experience.present'),
+            tagKeys: ['Python', 'React', 'SQLite', 'ai', 'C'],
+            color: '#10b981',
+        },
+    ];
 
     return (
         <section id="experiencia" className="py-24 px-6 relative">
@@ -42,12 +40,12 @@ export default function Experience() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <p className="section-subtitle">Trayectoria</p>
+                    <p className="section-subtitle">{t('experience.subtitle')}</p>
                     <h2 className="section-title text-white">
-                        Experiencia &amp; <span className="electric-text">Certificaciones</span>
+                        {t('experience.title_start')}<span className="electric-text">{t('experience.title_accent')}</span>
                     </h2>
                     <p className="text-text-secondary mt-4 max-w-xl mx-auto">
-                        Mi camino profesional y las certificaciones que respaldan mis habilidades.
+                        {t('experience.description')}
                     </p>
                 </motion.div>
 
@@ -87,18 +85,20 @@ export default function Experience() {
                                             </div>
 
                                             {/* Title */}
-                                            <h3 className="text-white font-bold text-base mb-0.5">{item.title}</h3>
+                                            <h3 className="text-white font-bold text-base mb-0.5">{t(`experience.items.${item.idKey}.title`)}</h3>
                                             <p className="text-electric text-sm font-medium mb-3">{item.organization}</p>
 
                                             {/* Description */}
                                             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                                                {item.description}
+                                                {t(`experience.items.${item.idKey}.description`)}
                                             </p>
 
                                             {/* Tags */}
                                             <div className="flex flex-wrap gap-1.5">
-                                                {item.tags.map((tag) => (
-                                                    <span key={tag} className="tag text-[11px]">{tag}</span>
+                                                {(item.tagKeys || item.tags).map((tag, i) => (
+                                                    <span key={i} className="tag text-[11px]">
+                                                        {item.tagKeys ? t(`experience.tags.${tag}`) : tag}
+                                                    </span>
                                                 ))}
                                             </div>
                                         </div>

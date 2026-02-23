@@ -1,12 +1,22 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiHeart } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+    const { t } = useTranslation();
     const year = new Date().getFullYear();
 
     const scrollTo = (id) => {
         document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    const navItems = [
+        { href: '#hero', label: t('navbar.start') },
+        { href: '#stack', label: t('navbar.stack') },
+        { href: '#proyectos', label: t('navbar.projects') },
+        { href: '#experiencia', label: t('navbar.experience') },
+        { href: '#contacto', label: t('navbar.contact') },
+    ];
 
     return (
         <footer className="border-t border-dark-border bg-dark-card/30 py-10 px-6">
@@ -24,18 +34,15 @@ export default function Footer() {
 
                     {/* Nav links */}
                     <div className="flex items-center gap-6">
-                        {['#hero', '#stack', '#proyectos', '#experiencia', '#contacto'].map((href, i) => {
-                            const labels = ['Inicio', 'Stack', 'Proyectos', 'Experiencia', 'Contacto'];
-                            return (
-                                <button
-                                    key={href}
-                                    onClick={() => scrollTo(href)}
-                                    className="text-text-secondary hover:text-electric text-xs font-medium transition-colors"
-                                >
-                                    {labels[i]}
-                                </button>
-                            );
-                        })}
+                        {navItems.map((item) => (
+                            <button
+                                key={item.href}
+                                onClick={() => scrollTo(item.href)}
+                                className="text-text-secondary hover:text-electric text-xs font-medium transition-colors"
+                            >
+                                {item.label}
+                            </button>
+                        ))}
                     </div>
 
                     {/* Social */}
@@ -62,10 +69,10 @@ export default function Footer() {
                 {/* Divider */}
                 <div className="border-t border-dark-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
                     <p className="text-text-secondary text-xs font-mono">
-                        © {year} DevPortfolio. Todos los derechos reservados.
+                        {t('footer.rights', { year })}
                     </p>
                     <p className="text-text-secondary text-xs flex items-center gap-1">
-                        Hecho con <FiHeart className="w-3 h-3 text-red-400" /> y React
+                        {t('footer.made_with')} <FiHeart className="w-3 h-3 text-red-400" /> {t('footer.and')} React
                     </p>
                 </div>
             </div>

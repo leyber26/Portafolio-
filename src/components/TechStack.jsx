@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
     SiPython, SiFlask, SiReact, SiSupabase, SiPostgresql,
     SiJavascript, SiHtml5, SiCss3, SiGit, SiNodedotjs,
@@ -8,18 +9,18 @@ import {
 } from 'react-icons/si';
 
 const technologies = [
-    { icon: SiPython, name: 'Python', color: '#3776AB', level: 'Avanzado' },
-    { icon: SiFlask, name: 'Flask', color: '#ffffff', level: 'Avanzado' },
-    { icon: SiReact, name: 'React', color: '#61DAFB', level: 'Avanzado' },
-    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E', level: 'Avanzado' },
-    { icon: SiPostgresql, name: 'PostgreSQL', color: '#336791', level: 'Intermedio' },
-    { icon: SiSupabase, name: 'Supabase', color: '#3ECF8E', level: 'Intermedio' },
-    { icon: SiNodedotjs, name: 'Node.js', color: '#339933', level: 'Intermedio' },
-    { icon: SiNpm, name: 'npm', color: '#CB3837', level: 'Avanzado' },
-    { icon: SiHtml5, name: 'HTML5', color: '#E34F26', level: 'Avanzado' },
-    { icon: SiCss3, name: 'CSS3', color: '#1572B6', level: 'Avanzado' },
-    { icon: SiGit, name: 'Git', color: '#F05032', level: 'Avanzado' },
-    { icon: SiDocker, name: 'Docker', color: '#2496ED', level: 'Básico' },
+    { icon: SiPython, name: 'Python', color: '#3776AB', levelKey: 'advanced' },
+    { icon: SiFlask, name: 'Flask', color: '#ffffff', levelKey: 'advanced' },
+    { icon: SiReact, name: 'React', color: '#61DAFB', levelKey: 'advanced' },
+    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E', levelKey: 'advanced' },
+    { icon: SiPostgresql, name: 'PostgreSQL', color: '#336791', levelKey: 'intermediate' },
+    { icon: SiSupabase, name: 'Supabase', color: '#3ECF8E', levelKey: 'intermediate' },
+    { icon: SiNodedotjs, name: 'Node.js', color: '#339933', levelKey: 'intermediate' },
+    { icon: SiNpm, name: 'npm', color: '#CB3837', levelKey: 'advanced' },
+    { icon: SiHtml5, name: 'HTML5', color: '#E34F26', levelKey: 'advanced' },
+    { icon: SiCss3, name: 'CSS3', color: '#1572B6', levelKey: 'advanced' },
+    { icon: SiGit, name: 'Git', color: '#F05032', levelKey: 'advanced' },
+    { icon: SiDocker, name: 'Docker', color: '#2496ED', levelKey: 'basic' },
 ];
 
 const containerVariants = {
@@ -35,6 +36,7 @@ const itemVariants = {
 };
 
 export default function TechStack() {
+    const { t } = useTranslation();
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -49,12 +51,12 @@ export default function TechStack() {
                     className="text-center mb-16"
                     ref={ref}
                 >
-                    <p className="section-subtitle">Tecnologías</p>
+                    <p className="section-subtitle">{t('stack.subtitle')}</p>
                     <h2 className="section-title text-white">
-                        Mi <span className="electric-text">Stack</span> Tecnológico
+                        {t('stack.title_start')}<span className="electric-text">{t('stack.title_accent')}</span>{t('stack.title_end')}
                     </h2>
                     <p className="text-text-secondary mt-4 max-w-xl mx-auto">
-                        Herramientas y tecnologías con las que construyo soluciones robustas y escalables.
+                        {t('stack.description')}
                     </p>
                 </motion.div>
 
@@ -83,7 +85,7 @@ export default function TechStack() {
                             </div>
                             <div className="text-center">
                                 <p className="text-white text-xs font-semibold">{tech.name}</p>
-                                <p className="text-text-secondary text-[10px] mt-0.5 font-mono">{tech.level}</p>
+                                <p className="text-text-secondary text-[10px] mt-0.5 font-mono">{t(`stack.levels.${tech.levelKey}`)}</p>
                             </div>
                         </motion.div>
                     ))}

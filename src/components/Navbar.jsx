@@ -1,22 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-
-const navLinks = [
-    { label: 'Inicio', href: '#hero' },
-    { label: 'Stack', href: '#stack' },
-    { label: 'Proyectos', href: '#proyectos' },
-    { label: 'Experiencia', href: '#experiencia' },
-];
+import { useTranslation } from 'react-i18next';
+import { HiOutlineTranslate } from 'react-icons/hi';
 
 export default function Navbar() {
+    const { t, i18n } = useTranslation();
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const navLinks = [
+        { label: t('navbar.start'), href: '#hero' },
+        { label: t('navbar.stack'), href: '#stack' },
+        { label: t('navbar.projects'), href: '#proyectos' },
+        { label: t('navbar.experience'), href: '#experiencia' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const toggleLanguage = () => {
+        const nextLng = i18n.language === 'es' ? 'en' : 'es';
+        i18n.changeLanguage(nextLng);
+    };
 
     const handleNavClick = (e, href) => {
         e.preventDefault();
@@ -62,25 +70,43 @@ export default function Navbar() {
                             {link.label}
                         </a>
                     ))}
+
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-2 text-text-secondary hover:text-electric transition-colors p-2 rounded-lg hover:bg-white/5"
+                        title={i18n.language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                    >
+                        <HiOutlineTranslate className="w-5 h-5" />
+                        <span className="text-xs font-mono font-bold uppercase">{i18n.language}</span>
+                    </button>
+
                     <a
                         href="#contacto"
                         onClick={(e) => handleNavClick(e, '#contacto')}
                         className="btn-primary text-sm py-2 px-5"
                     >
-                        Contáctame
+                        {t('navbar.contact')}
                     </a>
                 </div>
 
                 {/* Mobile Hamburger */}
-                <button
-                    className="md:hidden flex flex-col gap-1.5 p-2"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                    <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-                    <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-                </button>
+                <div className="flex items-center gap-4 md:hidden">
+                    <button
+                        onClick={toggleLanguage}
+                        className="text-text-secondary hover:text-electric p-1"
+                    >
+                        <HiOutlineTranslate className="w-5 h-5" />
+                    </button>
+                    <button
+                        className="flex flex-col gap-1.5 p-2"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                        <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-6 h-0.5 bg-electric transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -100,6 +126,13 @@ export default function Navbar() {
                             {link.label}
                         </a>
                     ))}
+                    <a
+                        href="#contacto"
+                        onClick={(e) => handleNavClick(e, '#contacto')}
+                        className="btn-primary text-center text-sm py-2 px-5"
+                    >
+                        {t('navbar.contact')}
+                    </a>
                 </motion.div>
             )}
         </motion.nav>

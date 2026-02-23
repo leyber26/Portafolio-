@@ -1,0 +1,158 @@
+{
+    "navbar": {
+        "start": "Inicio",
+        "stack": "Stack",
+        "projects": "Proyectos",
+        "experience": "Experiencia",
+        "contact": "Contáctame"
+    },
+    "hero": {
+        "badge": "Disponible para proyectos",
+        "greeting": "Hola, soy",
+        "roles": [
+            "Desarrollador Fullstack",
+            "Especialista en Sistemas ISO 11620",
+            "Arquitecto de Soluciones Web",
+            "Apasionado por el código limpio"
+        ],
+        "description": "Construyo experiencias digitales de alto impacto con tecnologías modernas. Especializado en sistemas de gestión, dashboards analíticos y plataformas web escalables.",
+        "cta_projects": "Ver mis proyectos",
+        "cta_contact": "Contáctame",
+        "scroll": "SCROLL"
+    },
+    "stack": {
+        "subtitle": "Tecnologías",
+        "title_start": "Mi ",
+        "title_accent": "Stack",
+        "title_end": " Tecnológico",
+        "description": "Herramientas y tecnologías con las que construyo soluciones robustas y escalables.",
+        "levels": {
+            "advanced": "Avanzado",
+            "intermediate": "Intermedio",
+            "basic": "Básico"
+        }
+    },
+    "projects": {
+        "subtitle": "Portafolio",
+        "title_start": "Proyectos ",
+        "title_accent": "Destacados",
+        "description": "Soluciones reales que he construido, desde sistemas de gestión hasta plataformas de comercio electrónico.",
+        "list": {
+            "voxen": {
+                "title": "Voxen Labs: Analíticas Híbridas",
+                "description": "App híbrida (.exe) con backend en Python (Tkinter, Pywebview, SQLite) y dashboard web moderno. Implementación de diseño Glassmorphism, modo claro/oscuro y sistema seguro de login.",
+                "badge": "Escritorio"
+            },
+            "ecommerce": {
+                "title": "Gestor de E-Commerce & Inventario",
+                "description": "Panel de administración con lógica para alertas de stock, prevención de compras agotadas y dashboard de validación de pagos y actualización de estados de órdenes.",
+                "badge": "E-commerce"
+            },
+            "ia": {
+                "title": "IA Offline: Integración Local",
+                "description": "Configuración y despliegue de modelos de síntesis de voz (Qwen-TTS) and reconocimiento (Whisper) para ejecución en entorno local sin APIs externas, asegurando máxima privacidad.",
+                "badge": "Inteligencia Artificial"
+            },
+            "portfolio": {
+                "title": "React Portfolio & Túneles (Localtunnel)",
+                "description": "Single Page Application (SPA) con React y Vite. Configuración de túneles seguros para exponer de forma pública el servidor local sin hosting dedicado.",
+                "badge": "Web & Redes"
+            },
+            "wordbank": {
+                "title": "Motor \"Word Bank\" I/O en C",
+                "description": "Procesamiento a bajo nivel para el conteo de ocurrencias de palabras. Optimización matemática de memoria por manipulación estricta de archivos/punteros evitando arrays/structs.",
+                "badge": "Sistemas"
+            }
+        },
+        "tags": {
+            "mgmt": "Gestión",
+            "logistics": "Logística",
+            "ai": "IA",
+            "networks": "Redes",
+            "low_level": "Bajo Nivel",
+            "algorithms": "Algoritmos",
+            "Python": "Python",
+            "Tkinter": "Tkinter",
+            "SQLite": "SQLite",
+            "HTML/CSS/JS": "HTML/CSS/JS",
+            "React": "React",
+            "Dashboard": "Dashboard",
+            "Whisper": "Whisper",
+            "Qwen-TTS": "Qwen-TTS",
+            "Vite": "Vite",
+            "Localtunnel": "Localtunnel",
+            "C": "C",
+            "I/O": "I/O"
+        },
+        "actions": {
+            "demo": "Demo",
+            "code": "Código"
+        }
+    },
+    "experience": {
+        "subtitle": "Trayectoria",
+        "title_start": "Experiencia & ",
+        "title_accent": "Certificaciones",
+        "description": "Mi camino profesional y las certificaciones que respaldan mis habilidades.",
+        "present": "Presente",
+        "items": {
+            "policlinica": {
+                "title": "Soporte Técnico / Especialista IT",
+                "description": "Mantenimiento de equipos, gestión de redes y soporte a usuarios del área médica. Optimización del tiempo de respuesta en el sistema de tickets internos y soporte de software de la clínica."
+            },
+            "independent": {
+                "title": "Desarrollador de Software Independiente",
+                "description": "Desarrollo de aplicaciones de escritorio híbridas, sistemas avanzados de gestión de inventario y pedidos, e integración local de modelos de Inteligencia Artificial (Qwen-TTS, Whisper)."
+            }
+        },
+        "tags": {
+            "support": "Soporte IT",
+            "networks": "Redes",
+            "maintenance": "Mantenimiento",
+            "Python": "Python",
+            "React": "React",
+            "SQLite": "SQLite",
+            "ai": "IA",
+            "C": "C"
+        }
+    },
+    "contact": {
+        "subtitle": "Contacto",
+        "title_start": "Hablemos de tu ",
+        "title_accent": "Proyecto",
+        "description": "¿Tienes una idea o proyecto en mente? Me encantaría escucharte.",
+        "labels": {
+            "email": "Email",
+            "location": "Ubicación",
+            "phone": "Teléfono",
+            "social": "Redes Sociales",
+            "name": "Nombre",
+            "message": "Mensaje"
+        },
+        "placeholders": {
+            "name": "Tu nombre completo",
+            "email": "tu@email.com",
+            "message": "Cuéntame sobre tu proyecto..."
+        },
+        "errors": {
+            "name": "El nombre es requerido",
+            "email_required": "El email es requerido",
+            "email_invalid": "Email inválido",
+            "message_required": "El mensaje es requerido",
+            "message_min": "Mínimo 10 caracteres",
+            "general": "Hubo un error al enviar el mensaje. Por favor intenta nuevamente más tarde."
+        },
+        "submit": "Enviar Mensaje",
+        "submitting": "Enviando...",
+        "success": {
+            "title": "¡Mensaje enviado!",
+            "message": "Gracias por contactarme. Te responderé pronto.",
+            "button": "Enviar otro mensaje"
+        }
+    },
+    "footer": {
+        "rights": "© {{year}} DevPortfolio. Todos los derechos reservados.",
+        "made_with": "Hecho con",
+        "and": "y"
+    }
+}

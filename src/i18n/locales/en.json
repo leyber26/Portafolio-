@@ -1,0 +1,158 @@
+{
+    "navbar": {
+        "start": "Home",
+        "stack": "Stack",
+        "projects": "Projects",
+        "experience": "Experience",
+        "contact": "Contact Me"
+    },
+    "hero": {
+        "badge": "Available for projects",
+        "greeting": "Hi, I'm",
+        "roles": [
+            "Fullstack Developer",
+            "ISO 11620 Systems Specialist",
+            "Web Solutions Architect",
+            "Passionate about clean code"
+        ],
+        "description": "I build high-impact digital experiences with modern technologies. Specialized in management systems, analytical dashboards, and scalable web platforms.",
+        "cta_projects": "View my projects",
+        "cta_contact": "Contact me",
+        "scroll": "SCROLL"
+    },
+    "stack": {
+        "subtitle": "Technologies",
+        "title_start": "My ",
+        "title_accent": "Tech Stack",
+        "title_end": "",
+        "description": "Tools and technologies I use to build robust and scalable solutions.",
+        "levels": {
+            "advanced": "Advanced",
+            "intermediate": "Intermediate",
+            "basic": "Basic"
+        }
+    },
+    "projects": {
+        "subtitle": "Portfolio",
+        "title_start": "Featured ",
+        "title_accent": "Projects",
+        "description": "Real solutions I've built, from management systems to e-commerce platforms.",
+        "list": {
+            "voxen": {
+                "title": "Voxen Labs: Hybrid Analytics",
+                "description": "Hybrid app (.exe) with Python backend (Tkinter, Pywebview, SQLite) and modern web dashboard. Implementation of Glassmorphism design, light/dark mode, and secure login system.",
+                "badge": "Desktop"
+            },
+            "ecommerce": {
+                "title": "E-Commerce & Inventory Manager",
+                "description": "Admin panel with logic for stock alerts, out-of-stock prevention, and payment validation dashboard with order status updates.",
+                "badge": "E-commerce"
+            },
+            "ia": {
+                "title": "Offline AI: Local Integration",
+                "description": "Configuration and deployment of speech synthesis (Qwen-TTS) and recognition (Whisper) models for local execution without external APIs, ensuring maximum privacy.",
+                "badge": "Artificial Intelligence"
+            },
+            "portfolio": {
+                "title": "React Portfolio & Tunnels (Localtunnel)",
+                "description": "Single Page Application (SPA) with React and Vite. Configuration of secure tunnels to publicly expose local server without dedicated hosting.",
+                "badge": "Web & Networks"
+            },
+            "wordbank": {
+                "title": "C \"Word Bank\" I/O Engine",
+                "description": "Low-level processing for word occurrence counting. Mathematical memory optimization through strict file/pointer manipulation avoiding arrays/structs.",
+                "badge": "Systems"
+            }
+        },
+        "tags": {
+            "mgmt": "Management",
+            "logistics": "Logistics",
+            "ai": "AI",
+            "networks": "Networks",
+            "low_level": "Low Level",
+            "algorithms": "Algorithms",
+            "Python": "Python",
+            "Tkinter": "Tkinter",
+            "SQLite": "SQLite",
+            "HTML/CSS/JS": "HTML/CSS/JS",
+            "React": "React",
+            "Dashboard": "Dashboard",
+            "Whisper": "Whisper",
+            "Qwen-TTS": "Qwen-TTS",
+            "Vite": "Vite",
+            "Localtunnel": "Localtunnel",
+            "C": "C",
+            "I/O": "I/O"
+        },
+        "actions": {
+            "demo": "Demo",
+            "code": "Code"
+        }
+    },
+    "experience": {
+        "subtitle": "Trajectory",
+        "title_start": "Experience & ",
+        "title_accent": "Certifications",
+        "description": "My professional path and the certifications that back my skills.",
+        "present": "Present",
+        "items": {
+            "policlinica": {
+                "title": "Technical Support / IT Specialist",
+                "description": "Equipment maintenance, network management, and support for medical area users. Optimization of response time in the internal ticket system and clinic software support."
+            },
+            "independent": {
+                "title": "Independent Software Developer",
+                "description": "Development of hybrid desktop applications, advanced inventory and order management systems, and local integration of Artificial Intelligence models (Qwen-TTS, Whisper)."
+            }
+        },
+        "tags": {
+            "support": "Support",
+            "networks": "Networks",
+            "maintenance": "Maintenance",
+            "Python": "Python",
+            "React": "React",
+            "SQLite": "SQLite",
+            "ai": "AI",
+            "C": "C"
+        }
+    },
+    "contact": {
+        "subtitle": "Contact",
+        "title_start": "Let's talk about your ",
+        "title_accent": "Project",
+        "description": "Do you have an idea or project in mind? I'd love to hear from you.",
+        "labels": {
+            "email": "Email",
+            "location": "Location",
+            "phone": "Phone",
+            "social": "Social Media",
+            "name": "Name",
+            "message": "Message"
+        },
+        "placeholders": {
+            "name": "Your full name",
+            "email": "you@email.com",
+            "message": "Tell me about your project..."
+        },
+        "errors": {
+            "name": "Name is required",
+            "email_required": "Email is required",
+            "email_invalid": "Invalid email",
+            "message_required": "Message is required",
+            "message_min": "Minimum 10 characters",
+            "general": "There was an error sending the message. Please try again later."
+        },
+        "submit": "Send Message",
+        "submitting": "Sending...",
+        "success": {
+            "title": "Message sent!",
+            "message": "Thanks for contacting me. I'll respond soon.",
+            "button": "Send another message"
+        }
+    },
+    "footer": {
+        "rights": "© {{year}} DevPortfolio. All rights reserved.",
+        "made_with": "Made with",
+        "and": "and"
+    }
+}

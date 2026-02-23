@@ -1,7 +1,8 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiArrowDown, FiGithub, FiLinkedin } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 // Canvas-based particle network (no external dependency)
 function ParticleCanvas() {
@@ -93,6 +94,8 @@ function ParticleCanvas() {
 }
 
 export default function Hero() {
+    const { t, i18n } = useTranslation();
+
     const scrollToProjects = () => {
         document.querySelector('#proyectos')?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -100,6 +103,14 @@ export default function Hero() {
     const scrollToContact = () => {
         document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    // Flatten roles array correctly for TypeAnimation [text, duration, text, duration...]
+    const rolesArray = t('hero.roles', { returnObjects: true });
+    const sequence = rolesArray.reduce((acc, role) => {
+        acc.push(role);
+        acc.push(2000);
+        return acc;
+    }, []);
 
     return (
         <section
@@ -123,7 +134,7 @@ export default function Hero() {
                 >
                     <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
                     <span className="text-electric text-sm font-mono font-medium tracking-wider">
-                        Disponible para proyectos
+                        {t('hero.badge')}
                     </span>
                 </motion.div>
 
@@ -134,7 +145,7 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 0.3 }}
                     className="section-title text-5xl md:text-7xl mb-4"
                 >
-                    <span className="text-white">Hola, soy</span>
+                    <span className="text-white">{t('hero.greeting')}</span>
                     <br />
                     <span className="electric-text text-glow">LEYBER Colmenarez</span>
                 </motion.h1>
@@ -147,16 +158,8 @@ export default function Hero() {
                     className="text-xl md:text-2xl text-text-secondary mb-10 font-mono min-h-[2rem]"
                 >
                     <TypeAnimation
-                        sequence={[
-                            'Desarrollador Fullstack',
-                            2000,
-                            'Especialista en Sistemas ISO 11620',
-                            2000,
-                            'Arquitecto de Soluciones Web',
-                            2000,
-                            'Apasionado por el código limpio',
-                            2000,
-                        ]}
+                        key={i18n.language} // Force re-render on language change
+                        sequence={sequence}
                         wrapper="span"
                         speed={50}
                         repeat={Infinity}
@@ -171,8 +174,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.65 }}
                     className="text-text-secondary text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
                 >
-                    Construyo experiencias digitales de alto impacto con tecnologías modernas.
-                    Especializado en sistemas de gestión, dashboards analíticos y plataformas web escalables.
+                    {t('hero.description')}
                 </motion.p>
 
                 {/* CTAs */}
@@ -183,11 +185,11 @@ export default function Hero() {
                     className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
                 >
                     <button onClick={scrollToProjects} className="btn-primary flex items-center gap-2">
-                        Ver mis proyectos
+                        {t('hero.cta_projects')}
                         <FiArrowDown className="w-4 h-4" />
                     </button>
                     <button onClick={scrollToContact} className="btn-outline">
-                        Contáctame
+                        {t('hero.cta_contact')}
                     </button>
                 </motion.div>
 
@@ -228,7 +230,7 @@ export default function Hero() {
                 className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
                 style={{ zIndex: 2 }}
             >
-                <span className="text-text-secondary text-xs font-mono tracking-widest">SCROLL</span>
+                <span className="text-text-secondary text-xs font-mono tracking-widest">{t('hero.scroll')}</span>
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
